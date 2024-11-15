@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:52:48 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/15 21:54:39 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/15 22:22:46 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,13 @@ class Bureaucrat
 	class GradeTooHighException : public std::exception
 	{
 	public:
-		const char * what() const throw() {
-			return "Grade too hight. Grade can't be higher than 1";
-		}
+		const char * what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception
 	{
 	public:
-		const char * what() const throw() {
-			return "Grade too low. Grade can't be lower than 150";
-		}
+		const char * what() const throw();
 	};
 };
 
