@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:59:51 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/18 14:52:54 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/18 18:17:36 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ public:
 	};
 
 	class GradeTooLowException : public std::exception
+	{
+	public:
+		const char * what() const throw();
+	};
+
+	class FormAlreadySignedException : public std::exception
 	{
 	public:
 		const char * what() const throw();

@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 19:13:21 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/18 14:53:19 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/18 19:44:10 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int	main(void)
 			Form("Taxes", 10, 50),
 			Form("Application", 10, 50),
 		};
-		Bureaucrat pelouse("LA Pelouse", 5);
-		Form test("test", 10, 8, pelouse);
 		int	bLength;
 		int	fLength;
 
@@ -47,9 +45,33 @@ int	main(void)
 				for (int k = 0; k < fLength; k++)
 				{
 					bureaucrats[i]++;
-					bureaucrats[i].signForm(forms[k]);
-					forms[k].beSigned(bureaucrats[i]);
-					test.beSigned(pelouse);
+					try {
+						forms[k].beSigned(bureaucrats[i]);
+						bureaucrats[i].signForm(forms[k]);
+				//	std::cout << "\t" <<	bureaucrats[i] << "\n";
+					//	continue ;
+						break ;
+					//	test.beSigned(pelouse);
+					}
+					catch (const std::exception &customException)
+					{
+						std::cerr << customException.what() << std::endl;
+					}
+				//	break ;
+/*
+					break ;
+					try {
+					//	forms[k].beSigned(bureaucrats[i]);
+					//	std::cout << "Attention tout le monde\n";
+						bureaucrats[i].signForm(forms[k]);
+					//	test.beSigned(pelouse);
+					}
+					catch (const std::exception &customException)
+					{
+						std::cerr << customException.what() << std::endl;
+					}
+*/
+//					bureaucrats[i].signForm(forms[k]);
 				}
 			}
 		}

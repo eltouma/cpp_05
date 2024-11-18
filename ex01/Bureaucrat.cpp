@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:52:48 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/18 14:20:29 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/18 19:31:44 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,11 @@ const char * Bureaucrat::GradeTooLowException::what() const throw()
 void	Bureaucrat::signForm(const Form& form)
 {
 	if (this->_grade <= CAN_SIGN)
+	{
+//		if (form.getSigned())
+//			return ;
 		std::cout << this->_name << " signed " << form.getName() << std::endl;
+	}
 	if (this->_grade > CAN_SIGN)
 		std::cout << this->_name << " couldn't signed " << form.getName() << " because his grade is " << this->_grade << ". Only bureaucrats with a rank above " << CAN_SIGN << " can sign the forms" << std::endl ;
 }
