@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:52:48 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/15 22:22:27 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/18 10:42:35 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ Bureaucrat& Bureaucrat::operator++()
 
 Bureaucrat Bureaucrat::operator++(int)
 {
+	if (_grade <= HIGHEST)
+		throw Bureaucrat::GradeTooHighException();
 	Bureaucrat	tmp = *this;
 	++*this;
-	if (_grade < HIGHEST)
-		throw Bureaucrat::GradeTooHighException();
 	return (tmp);
 }
 
@@ -64,10 +64,10 @@ Bureaucrat& Bureaucrat::operator--()
 
 Bureaucrat Bureaucrat::operator--(int)
 {
+	if (_grade >= LOWEST)
+		throw Bureaucrat::GradeTooLowException();
 	Bureaucrat	tmp = *this;
 	--*this;
-	if (_grade > LOWEST)
-		throw Bureaucrat::GradeTooLowException();
 	return (tmp);
 }
 std::string const & Bureaucrat::getName(void) const
