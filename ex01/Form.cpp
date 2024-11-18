@@ -24,21 +24,21 @@ Form::~Form(void)
 Form::Form(const std::string name, const int canSign, const int canExec) : _name(name), _signed(false), _canSign(canSign), _canExec(canExec)
 {
 	if (_canExec < HIGHEST || _canSign < HIGHEST)
-		throw Form::GradeTooLowException();
-	if (_canExec > LOWEST || _canSign > LOWEST)
 		throw Form::GradeTooHighException();
+	if (_canExec > LOWEST || _canSign > LOWEST)
+		throw Form::GradeTooLowException();
 }
 
 Form::Form(const std::string name, const int canSign, const int canExec, const Bureaucrat &bureaucrat) : _name(name), _signed(false), _canSign(canSign), _canExec(canExec)
 {
 	if (_canExec < HIGHEST || _canSign < HIGHEST)
-		throw Form::GradeTooLowException();
+		throw Form::GradeTooHighException();
 	if (_canExec > LOWEST || _canSign > LOWEST)
-		throw Form::GradeTooHighException();
-	if (bureaucrat.getGrade() < HIGHEST)
 		throw Form::GradeTooLowException();
-	if (bureaucrat.getGrade() > LOWEST)
+	if (bureaucrat.getGrade() < HIGHEST)
 		throw Form::GradeTooHighException();
+	if (bureaucrat.getGrade() > LOWEST)
+		throw Form::GradeTooLowException();
 }
 
 Form::Form(const Form& obj) : _signed(false), _canSign(10), _canExec(50)

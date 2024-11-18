@@ -28,12 +28,13 @@ int	main(void)
 		};
 		Form	forms[] = {
 			Form("Subscription", 10, 50),
-			Form("Birth certificate", 1, 80),
+			Form("Birth certificate", 55, 80),
 			Form("Insurance", 10, 50),
 			Form("Taxes", 10, 50),
 			Form("Application", 10, 50),
 		};
-
+		Bureaucrat pelouse("LA Pelouse", 5);
+		Form test("test", 10, 8, pelouse);
 		int	bLength;
 		int	fLength;
 
@@ -48,6 +49,7 @@ int	main(void)
 					bureaucrats[i]++;
 					bureaucrats[i].signForm(forms[k]);
 					forms[k].beSigned(bureaucrats[i]);
+					test.beSigned(pelouse);
 				}
 			}
 		}
