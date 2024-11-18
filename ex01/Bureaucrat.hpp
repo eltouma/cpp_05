@@ -6,17 +6,20 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:52:48 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/18 11:47:20 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/18 12:45:51 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+//#include "Form.hpp"
 #include <iostream>
 #include <string>
 
 # define HIGHEST 1
 # define LOWEST 150
+
+class Form;
 
 class Bureaucrat
 {
@@ -35,6 +38,7 @@ class Bureaucrat
 	Bureaucrat operator++(int);
 	Bureaucrat& operator--(void);
 	Bureaucrat operator--(int);
+	void	signForm(const Form& form);
 
 	class GradeTooHighException : public std::exception
 	{
