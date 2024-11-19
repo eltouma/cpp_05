@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:52:48 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/18 20:41:10 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 16:38:09 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ const char * Bureaucrat::GradeTooHighException::what() const throw()
 
 const char * Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ", grade too low. Grade can't be higher than 150";
+	return ", grade too low. Grade can't be lower than 150";
 }
 
 std::ostream& operator<<(std::ostream & o_stream, Bureaucrat const & instance)

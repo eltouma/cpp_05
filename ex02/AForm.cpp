@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:52:48 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 02:21:02 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 17:20:13 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ const char * AForm::FormNotSignedException::what() const throw()
 
 void	AForm::beSigned(const Bureaucrat &bureaucrat)
 {
-
 	if (bureaucrat.getGrade() <= CAN_SIGN && this->getSigned())
 	{
 		std::cout << bureaucrat.getName() << " (grade: " << bureaucrat.getGrade() << "), could have signed " << this->_name << " but it's already signed";

@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:20:02 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 02:51:47 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 17:53:28 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Bureaucrat.hpp"
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(void) : AForm("PresidentialPardonForm", 25, 5), _target("Not forgiven")
+PresidentialPardonForm::PresidentialPardonForm(void) : AForm("PresidentialPardonForm", 25, 5), _target("Fabrice")
 {
 }
 
@@ -24,10 +24,9 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target)
 {
-	this->_target = this->getName();
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &obj) : AForm("PresidentialPardonForm", 25, 5)
 {
 	*this = obj;
 }

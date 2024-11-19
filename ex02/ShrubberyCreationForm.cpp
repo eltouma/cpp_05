@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:20:02 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 02:23:22 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 18:19:56 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("ShrubberyCreationForm", 145, 137), _target("Not forgiven")
+ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("ShrubberyCreationForm", 145, 137), _target("School 42")
 {
 }
 
@@ -22,7 +22,12 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
+{
+
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &obj) : AForm("ShrubberyCreationForm", 145, 137)
 {
 	*this = obj;
 }
@@ -34,19 +39,28 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-const char	*ShrubberyCreationForm::FormNotSignedException::what() const throw()
+const char * ShrubberyCreationForm::FailToOpenException::what() const throw()
 {
-	return " not signed";
+	return ", failed to open.";
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
+	std::string	outfileName = this->_target + "_shrubbery";
+
 	if (!this->getSigned())
 	{
 		std::cout << this->getName();
-		throw ShrubberyCreationForm::FormNotSignedException();
+		throw AForm::FormNotSignedException();
 	}
 	if (executor.getGrade() > this->getToExec()) 
 		throw AForm::GradeTooLowException();
-	std::cout << this->_target << " not forgiven by Zaphod Beeblebrox" << std::endl; 
+	std::ofstream asciiTree(outfileName.c_str(), std::ios::out);
+	if (!asciiTree.is_open())
+	{
+		std::cerr << "Error. " << outfileName;
+		throw ShrubberyCreationForm::FailToOpenException();
+	}
+	asciiTree << "ASCII trees";
+	asciiTree.close();
 }

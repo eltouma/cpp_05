@@ -6,12 +6,13 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:20:02 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 01:52:14 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 18:15:28 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
+#include <fstream>
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
@@ -23,11 +24,12 @@ class ShrubberyCreationForm : public AForm
 public:
 	ShrubberyCreationForm(void);
 	ShrubberyCreationForm(const ShrubberyCreationForm & obj);
+	ShrubberyCreationForm(std::string target);
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm & rhs);
-	~ShrubberyCreationForm(void);
-	void	execute(Bureaucrat const &executor) const;
+	virtual ~ShrubberyCreationForm(void);
+	virtual void	execute(Bureaucrat const &executor) const;
 
-	class	FormNotSignedException : public std::exception
+	class FailToOpenException : public std::exception
 	{
 	public:
 		const char * what() const throw();

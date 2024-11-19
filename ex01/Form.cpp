@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:52:48 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/18 20:55:02 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 16:55:38 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int const & Form::getToExec(void) const
 {
 	return (this->_canExec);
 }
+
 const char * Form::GradeTooHighException::what() const throw()
 {
 	return ", one of the grade is too hight. Can't sign or execute the form";

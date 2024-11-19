@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:20:02 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 02:49:55 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 17:48:11 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ public:
 	PresidentialPardonForm(const PresidentialPardonForm & obj);
 	PresidentialPardonForm(const std::string target);
 	PresidentialPardonForm& operator=(const PresidentialPardonForm & rhs);
-	~PresidentialPardonForm(void);
-	void	execute(Bureaucrat const &executor) const;
+	virtual ~PresidentialPardonForm(void);
+	virtual void	execute(Bureaucrat const &executor) const;
 };
