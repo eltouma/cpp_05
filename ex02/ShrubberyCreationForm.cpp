@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:20:02 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 18:19:56 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 19:18:14 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 		throw AForm::FormNotSignedException();
 	}
 	if (executor.getGrade() > this->getToExec()) 
+	{
+		std::cout << this->getName();
 		throw AForm::GradeTooLowException();
+	}
 	std::ofstream asciiTree(outfileName.c_str(), std::ios::out);
 	if (!asciiTree.is_open())
 	{

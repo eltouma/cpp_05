@@ -6,16 +6,13 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 10:59:51 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 17:49:38 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 19:06:08 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "Bureaucrat.hpp"
-
-#define CAN_SIGN 50
-#define CAN_EXEC 100
 
 class AForm
 {

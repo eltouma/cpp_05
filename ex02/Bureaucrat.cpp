@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:52:48 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 17:34:35 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 19:35:49 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,22 @@ const char * Bureaucrat::GradeTooLowException::what() const throw()
 	return " grade too low. Grade can't be higher than 150";
 }
 
-void	Bureaucrat::signAForm(const AForm& form)
+void	Bureaucrat::signAForm(const AForm& form) const
 {
-	if (this->_grade <= CAN_SIGN)
+
+	if (this->_grade <= form.getToSign())
 		std::cout << this->_name << " signed " << form.getName() << std::endl;
-	if (this->_grade > CAN_SIGN)
-		std::cout << this->_name << " couldn't signed " << form.getName() << " because his grade is " << this->_grade << ". Only bureaucrats with a rank above " << CAN_SIGN << " can sign the forms" << std::endl ;
+	if (this->_grade > form.getToSign())
+		std::cout << this->_name << " couldn't signed " << form.getName() << " because his grade is " << this->_grade << ". Only bureaucrats with a rank above " << form.getToSign() << " can sign the forms" << std::endl ;
 }
 
+void	Bureaucrat::executeForm(AForm const &form) const
+{
+	if (this->_grade <= form.getToExec())
+		std::cout << this->_name << " executed " << form.getName() << std::endl;
+	if (this->_grade > form.getToExec())
+		std::cout << this->_name << " couldn't executed " << form.getName() << " because his grade is " << this->_grade << ". Only bureaucrats with a rank above " << form.getToExec() << " can execute the forms" << std::endl ;
+}
 std::ostream& operator<<(std::ostream & o_stream, Bureaucrat const & instance)
 {
 	o_stream << instance.getName() << ", bureaucrat grade " << instance.getGrade() << "." << std::endl;

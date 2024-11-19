@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:20:02 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 18:30:36 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 19:17:49 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		throw AForm::FormNotSignedException();
 	}
 	if (executor.getGrade() > this->getToExec()) 
+	{
+		std::cout << this->getName();
 		throw AForm::GradeTooLowException();
+	}
 	std::cout << "Drilling noises" << std::endl;
 	if (!this->_index)
 		std::cout << this->_target << " has been robotomized successfully" << std::endl;

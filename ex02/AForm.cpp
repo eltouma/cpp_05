@@ -6,14 +6,14 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:52:48 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 17:20:13 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 19:05:58 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp" 
 #include "Bureaucrat.hpp" 
 
-AForm::AForm(void) : _name("AForm"), _signed(false), _canSign(CAN_SIGN), _canExec(CAN_EXEC)
+AForm::AForm(void) : _name("AForm"), _signed(false), _canSign(HIGHEST), _canExec(LOWEST)
 {
 }
 
@@ -96,12 +96,12 @@ const char * AForm::FormNotSignedException::what() const throw()
 
 void	AForm::beSigned(const Bureaucrat &bureaucrat)
 {
-	if (bureaucrat.getGrade() <= CAN_SIGN && this->getSigned())
+	if (bureaucrat.getGrade() <= this->_canSign && this->getSigned())
 	{
 		std::cout << bureaucrat.getName() << " (grade: " << bureaucrat.getGrade() << "), could have signed " << this->_name << " but it's already signed";
 		throw AForm::FormAlreadySignedException();
 	}
-	if (bureaucrat.getGrade() <= CAN_SIGN)
+	if (bureaucrat.getGrade() <= this->_canSign)
 		this->_signed = true;
 	else
 	{

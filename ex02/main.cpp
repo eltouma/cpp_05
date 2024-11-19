@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 19:13:21 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 18:38:34 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 19:35:21 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,22 @@ int	main(void)
 			Bureaucrat("Bastien", 24),
 			Bureaucrat("Mehdi", 91),
 			Bureaucrat("Antoine", 13),
-			Bureaucrat("Benoît", 3),
+			Bureaucrat("Benoît", 23),
 		};
+
 		PresidentialPardonForm	subscription("Subscription");
-		PresidentialPardonForm	birthCertificate("Birth certificate");
 		ShrubberyCreationForm	home("home");
-		ShrubberyCreationForm	garden("garden");
 		RobotomyRequestForm	bender("Bender");
+		PresidentialPardonForm	birthCertificate("Birth certificate");
+		ShrubberyCreationForm	garden("garden");
 		RobotomyRequestForm	walle("walle");
 
 		AForm	*forms[] = {
-			&subscription,
 			&home,
+			&subscription,
 			&bender,
 			&birthCertificate,
+			&garden,
 			&walle,
 		};
 
@@ -60,6 +62,7 @@ int	main(void)
 						forms[k]->beSigned(bureaucrats[i]);
 						bureaucrats[i].signAForm(*forms[k]);
 						forms[k]->execute(bureaucrats[i]);
+						bureaucrats[i].executeForm(*forms[k]);
 						break ;
 					}
 					catch (const std::exception &customException)

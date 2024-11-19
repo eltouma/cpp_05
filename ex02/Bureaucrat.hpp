@@ -6,13 +6,12 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 17:52:48 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/18 12:45:51 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/19 18:52:08 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-//#include "AForm.hpp"
 #include <iostream>
 #include <string>
 
@@ -38,7 +37,8 @@ class Bureaucrat
 	Bureaucrat operator++(int);
 	Bureaucrat& operator--(void);
 	Bureaucrat operator--(int);
-	void	signAForm(const AForm& form);
+	void	signAForm(const AForm& form) const;
+	void	executeForm(AForm const &form) const;
 
 	class GradeTooHighException : public std::exception
 	{
