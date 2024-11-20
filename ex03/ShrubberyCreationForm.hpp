@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:20:02 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 18:15:28 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/20 12:37:08 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ public:
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm & rhs);
 	virtual ~ShrubberyCreationForm(void);
 	virtual void	execute(Bureaucrat const &executor) const;
+	std::string getTarget(void) const;
 
 	class FailToOpenException : public std::exception
 	{

@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 19:13:21 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 19:35:21 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/20 12:53:29 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int	main(void)
 		};
 
 		PresidentialPardonForm	subscription("Subscription");
-		ShrubberyCreationForm	home("home");
+		ShrubberyCreationForm	home("Home");
 		RobotomyRequestForm	bender("Bender");
 		PresidentialPardonForm	birthCertificate("Birth certificate");
-		ShrubberyCreationForm	garden("garden");
-		RobotomyRequestForm	walle("walle");
+		ShrubberyCreationForm	garden("Garden");
+		RobotomyRequestForm	walle("Walle");
 
 		AForm	*forms[] = {
 			&home,

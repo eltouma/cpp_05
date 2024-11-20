@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 22:03:29 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 23:58:37 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/20 13:00:06 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,32 @@ AForm*	Intern::robotomyRequestForm(const std::string &target)
 	return (new RobotomyRequestForm(target));
 }
 
+AForm*	Intern::presidentialPardonForm(const std::string &target)
+{
+	std::cout << "Intern creates " << target << std::endl;
+	return (new PresidentialPardonForm(target));
+}
+
 const char * Intern::InternException::what() const throw()
 {
-	return ", does'nt not exist";
+	return ", doesn't exist";
 }
 
 AForm*	Intern::makeForm(std::string name, std::string target)
 {
-	AForm* (Intern::*display[2])(const std::string &target) =
+	AForm* (Intern::*display[3])(const std::string &target) =
 	{
 		&Intern::shrubberyCreationForm,
-		&Intern::robotomyRequestForm
+		&Intern::robotomyRequestForm,
+		&Intern::presidentialPardonForm
 	};
-	std::string formName[2] = 
+	std::string formName[3] =
 	{
-		"Subscription",
-		"RobotomyRequestForm"
+		"ShrubberyCreationForm",
+		"RobotomyRequestForm",
+		"PresidentialPardonForm",
 	};
-	for (int i = 0; i < 2; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		if (formName[i] == name)
 			return (this->*display[i])(target);

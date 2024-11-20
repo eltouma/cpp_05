@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 19:13:21 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 23:55:12 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/20 12:44:49 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(void)
 {
 	try {
 		Bureaucrat	bureaucrats[] =	{
-			Bureaucrat("Jackson", 4),
+			Bureaucrat("Jackson", 84),
 			Bureaucrat("Jess", 8),
 			Bureaucrat("Camille", 27),
 			Bureaucrat("Géraldine", 14),
@@ -32,67 +32,68 @@ int	main(void)
 		};
 
 		PresidentialPardonForm	subscription("Subscription");
-//		ShrubberyCreationForm	home("home");
-//		RobotomyRequestForm	bender("Bender");
+		ShrubberyCreationForm	home("Home");
+		RobotomyRequestForm	bender("Bender");
 		PresidentialPardonForm	birthCertificate("Birth certificate");
-//		ShrubberyCreationForm	garden("garden");
-//		RobotomyRequestForm	walle("walle");
+		ShrubberyCreationForm	garden("Garden");
+		RobotomyRequestForm	walle("Walle");
 
 		Intern	a;
-//		AForm* rrf;
 		Intern	b;
-/*
 		Intern	c;
 		Intern	d;
 		Intern	e;
 		Intern	f;
-		AForm* rrf;
-*/
-
-//		rrf = a.makeForm(subscription.getName(), "bender");
 
 		AForm	*forms[] = {
-//			&home,
 			&subscription,
-//			&bender,
+			&home,
+			&bender,
 			&birthCertificate,
-//			&garden,
-//			&walle,
+			&garden,
+			&walle,
 		};
 
 		Intern	*interns[] = {
 			&a,
 			&b,
-		};
-/*
 			&c,
 			&d,
 			&e,
 			&f,
 		};
-*/
 
+		AForm*	internCreation;
 		int	bLength;
 		int	fLength;
-//		int	iLength;
+		int	iLength;
+
 		bLength = sizeof(bureaucrats) / sizeof(bureaucrats[0]);
 		fLength = sizeof(forms) / sizeof(forms[0]);
-//		iLength = fLength; //sizeof(interns) / sizeof(interns[0]);
+		iLength = sizeof(interns) / sizeof(interns[0]);
 
-		for (int j = 0; j < 10; j++)
+		for (int i = 0; i < 10; i++)
 		{
-			for (int i = 0; i < bLength; i++)
+			for (int j = 0; j < bLength; j++)
 			{
-				for (int k = 0; k < fLength; k++)
+				for (int k = 0; k < fLength && k < iLength; k++)
 				{
-					bureaucrats[i]++;
+					bureaucrats[j]++;
 					try {
-						forms[k]->beSigned(bureaucrats[i]);
-						bureaucrats[i].signAForm(*forms[k]);
-						forms[k]->execute(bureaucrats[i]);
-						bureaucrats[i].executeForm(*forms[k]);
-						interns[i]->makeForm(forms[i]->getName(), subscription.getTarget());
-					//	a.makeForm("test", "Bender");
+						forms[k]->beSigned(bureaucrats[j]);
+						bureaucrats[j].signAForm(*forms[k]);
+						forms[k]->execute(bureaucrats[j]);
+						bureaucrats[j].executeForm(*forms[k]);
+						internCreation = interns[j]->makeForm(forms[j]->getName(), subscription.getTarget());
+						delete (internCreation);
+						internCreation = interns[j]->makeForm(forms[j]->getName(), bender.getTarget());
+						delete (internCreation);
+						internCreation = interns[j]->makeForm(forms[j]->getName(), "testForm");
+						delete (internCreation);
+						internCreation = interns[j]->makeForm("Marie", garden.getTarget());
+						delete (internCreation);
+						internCreation = interns[j]->makeForm(forms[j]->getName(), home.getTarget());
+						delete (internCreation);
 						break ;
 					}
 					catch (const std::exception &customException)

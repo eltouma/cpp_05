@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 16:20:02 by eltouma           #+#    #+#             */
-/*   Updated: 2024/11/19 22:01:31 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/11/20 12:37:37 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &r
 	if (this != &rhs)
 		this->_target = rhs._target;
 	return (*this);
+}
+
+std::string RobotomyRequestForm::getTarget(void) const
+{
+	return (this->_target);
 }
 
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
